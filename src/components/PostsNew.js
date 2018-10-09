@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
+  onSubmit(values) {
+    console.log('values:', values);
+  }
 
-  renderField (field) {
+  renderField(field) {
     return (
       <div className="form-group">
         <label>{field.label}</label>
@@ -17,12 +20,7 @@ class PostsNew extends Component {
     );
   }
 
-  onSubmit(values){
-    console.log('values:', values);
-  }
-
-  render () {
-
+  render() {
     const { handleSubmit } = this.props;
 
     return (
@@ -50,7 +48,7 @@ class PostsNew extends Component {
   }
 }
 
-function validate (values) {
+function validate(values) {
   const errors = {};
 
   if (!values.title) {

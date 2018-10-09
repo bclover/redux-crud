@@ -1,31 +1,28 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
 import { Link } from 'react-router-dom';
+import { fetchPosts } from '../actions';
 
 class PostsList extends Component {
-
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchPosts();
   }
 
-  renderPosts () {
-    return _.map(this.props.posts, post => {
-      return (
-        <li className="list-group-item" key={post.id}>
-          {post.title}
-        </li>
-      );
-    });
+  renderPosts() {
+    return _.map(this.props.posts, post => (
+      <li className="list-group-item" key={post.id}>
+        {post.title}
+      </li>
+    ));
   }
 
-  render () {
+  render() {
     return (
       <div>
         <div className="text-xs-right">
           <Link className="btn btn-primary" to="/posts/new">
-            Add a Post
+              Add a Post
           </Link>
         </div>
         <h3>List of Posts</h3>
@@ -37,8 +34,8 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  return {posts: state.posts};
+function mapStateToProps(state) {
+  return { posts: state.posts };
 }
 
-export default connect(mapStateToProps, {fetchPosts})(PostsList);
+export default connect(mapStateToProps, { fetchPosts })(PostsList);

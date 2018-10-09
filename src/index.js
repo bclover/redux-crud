@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
 
@@ -19,10 +19,11 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" component={PostsList}/>
-          <Route path="/posts/new" component={PostsNew}/>
+          <Route exact path="/" component={PostsList} />
+          <Route path="/posts/new" component={PostsNew} />
         </Switch>
       </div>
     </BrowserRouter>
-  </Provider>
-  , document.querySelector('.container'));
+  </Provider>,
+  document.querySelector('.container'),
+);
