@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap';
+
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -17,8 +19,8 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" component={PostsList} />
-          <Route path="/new" component={PostsNew}/>
+          <Route exact path="/" component={PostsList}/>
+          <Route path="/posts/new" component={PostsNew}/>
         </Switch>
       </div>
     </BrowserRouter>

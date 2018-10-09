@@ -1,26 +1,26 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from "../actions";
+import { fetchPosts } from '../actions';
 import { Link } from 'react-router-dom';
 
 class PostsList extends Component {
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchPosts();
   }
 
-  renderPosts() {
+  renderPosts () {
     return _.map(this.props.posts, post => {
       return (
         <li className="list-group-item" key={post.id}>
           {post.title}
         </li>
-      )
+      );
     });
   }
 
-  render() {
+  render () {
     return (
       <div>
         <div className="text-xs-right">
@@ -33,11 +33,11 @@ class PostsList extends Component {
           {this.renderPosts()}
         </ul>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {posts: state.posts};
 }
 
