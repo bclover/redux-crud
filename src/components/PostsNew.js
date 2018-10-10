@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { createPost } from '../actions';
 
 class PostsNew extends Component {
   onSubmit(values) {
-    console.log('values:', values);
+    const { createPost, history } = this.props;
+    createPost(values, () => {
+      history.push('/');
+    });
   }
 
-  renderField(field) {
+  renderField(field) { // eslint-disable-line
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
     return (
       <div className={className}>
-        <label>{field.label}</label>
+        <label>{field.label}</label> {/* eslint-disable-line */}
         <input
           className="form-control"
           {...field.input}
@@ -77,4 +82,6 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'PostsNewForm',
-})(PostsNew);
+})(
+  connect(null, { createPost })(PostsNew),
+);

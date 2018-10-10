@@ -9,6 +9,7 @@ import promise from 'redux-promise';
 
 import PostsList from './components/PostsList';
 import PostsNew from './components/PostsNew';
+import PostsShow from './components/PostsShow';
 
 import reducers from './reducers';
 
@@ -19,8 +20,9 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" component={PostsList} />
           <Route path="/posts/new" component={PostsNew} />
+          <Route path="/posts/:id" component={PostsShow} />
+          <Route exact path="/" component={PostsList} />
         </Switch>
       </div>
     </BrowserRouter>
